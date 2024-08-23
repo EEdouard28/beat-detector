@@ -9,7 +9,7 @@ import librosa.display
 audio_file = 'audio/Santorini - 11-4-23_Demo.mp3'
 
 # load the audio file
-y, sr = librosa(audio_file)
+y, sr = librosa.load(audio_file)
 
 print(f"Audio loaded successfully: {audio_file}")
 print(f"Sample rate: {sr}")
@@ -36,3 +36,12 @@ plt.ylabel('Amplitude')
 plt.title('Beat Detection')
 plt.legend()
 plt.show()
+
+# Smooth signal w/ Fourier transform
+tempo, beat_frames = librosa.beat.beat_track(y=librosa.effects.harmonic(y), sr=sr)
+
+
+# Save the beat timestamps to a text file
+with open('beat_times.txt', 'w') as f:
+    for beat in beat_times:
+        f.write(f"{beat}\n")
