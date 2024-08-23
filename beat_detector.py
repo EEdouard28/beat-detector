@@ -16,3 +16,7 @@ print(f"Sample rate: {sr}")
 tempo, beat_frames = librosa.beat.beat_track(y=y, sr=sr)
 
 print(f"Estimated tempo: {tempo} BPM")
+
+# Convert beat frames to timestamps
+beat_times = librosa.frames_to_time(beat_frames, sr=sr)
+print("Beat times (in seconds):", beat_times)
