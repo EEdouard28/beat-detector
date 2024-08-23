@@ -1,0 +1,11 @@
+# Ignore Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore virtual environment directories
+venv/
+env/
+
+# Ignore audio files (if you don't want them in the repo)
+audio/*.mp3
+audio/*.wav
