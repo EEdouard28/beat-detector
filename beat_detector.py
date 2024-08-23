@@ -2,6 +2,8 @@
 
 import librosa
 import librosa.beat
+import matplotlib.pyplot as plt
+import librosa.display
 
 # path to my audio file
 audio_file = 'audio/Santorini - 11-4-23_Demo.mp3'
@@ -20,3 +22,17 @@ print(f"Estimated tempo: {tempo} BPM")
 # Convert beat frames to timestamps
 beat_times = librosa.frames_to_time(beat_frames, sr=sr)
 print("Beat times (in seconds):", beat_times)
+
+
+# Plot the waveform
+plt.figure(figsize=(14, 5))
+librosa.display.waveshow(y, sr=sr, alpha=0.6)
+
+#Plot the beat times on the waveform
+plt.vlines(beat_times, ymin=-1, ymax=1, color='r', linestyle='--', label='Beats')
+
+plt.xlabel('Time (S)')
+plt.ylabel('Amplitude')
+plt.title('Beat Detection')
+plt.legend()
+plt.show()
